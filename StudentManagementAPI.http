@@ -1,0 +1,48 @@
+@StudentManagementAPI_HostAddress = http://localhost:5215
+
+### 1. Get All Students
+GET {{StudentManagementAPI_HostAddress}}/api/students
+Accept: application/json
+
+### 2. Get Student by ID (ID: 1)
+GET {{StudentManagementAPI_HostAddress}}/api/students/1
+Accept: application/json
+
+### 3. Add a New Student
+POST {{StudentManagementAPI_HostAddress}}/api/students
+Content-Type: application/json
+
+{
+  "name": "Daniel Miller",
+  "email": "daniel.miller@example.com",
+  "course": "Cyber Security"
+}
+
+### 4. Update an Existing Student (ID: 1)
+PUT {{StudentManagementAPI_HostAddress}}/api/students/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Alice Johnson Updated",
+  "email": "alice.updated@example.com",
+  "course": "Artificial Intelligence"
+}
+
+### 5. Delete a Student (ID: 3)
+DELETE {{StudentManagementAPI_HostAddress}}/api/students/3
+Accept: application/json
+
+### 6. Test Validation Error (Invalid Email & Missing Course)
+POST {{StudentManagementAPI_HostAddress}}/api/students
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "not-an-email",
+  "course": ""
+}
+
+### 7. Test Not Found (ID: 9999)
+GET {{StudentManagementAPI_HostAddress}}/api/students/9999
+Accept: application/json
